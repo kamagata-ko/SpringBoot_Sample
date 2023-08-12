@@ -16,12 +16,7 @@ public class SampleCotroller{
     String getHello() {
         return "hello";
     }
-
-    @GetMapping("/test")
-    String getHoge() {
-        return "hoge/test";
-    }
-
+    
     @PostMapping("/resultCtrl")
     String postResult(@RequestParam("val") String responseVal, Model mdoel) {
         mdoel.addAttribute("responseVal", responseVal);
