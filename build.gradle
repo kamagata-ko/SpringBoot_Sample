@@ -19,6 +19,10 @@ configurations {
     compileOnly {
             extendsFrom annotationProcessor
     }
+	developmentOnly
+	runtimeClasspath {
+        extendsFrom developmentOnly
+	}
 }
 
 dependencies {
@@ -27,6 +31,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {
