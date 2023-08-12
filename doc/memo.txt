@@ -17,10 +17,10 @@ MySQL が使える可動化を確認する
 
 mysqlに接続する
     mysql -u ユーザー名 -D データベース名 -p
-    例）mysql -u samplename -D sampledb -p
+    例）mysql -u your_database_user -D your_database_name -p
 
     パスワードを聞かれたらパスワードを入力する。
-    例）root
+    例）your_user_password
 
     ※「docker-compose.yml」ファイルにユーザー名やらDB名が載ってる
 
