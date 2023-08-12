@@ -1,0 +1,45 @@
+この「memo.txt」が入ってるディレクトリでターミナルを開く
+
+
+Dockerを起動させる
+    docker-compose up -d
+
+Docker のコンテナに入る。
+    docker container exec -it コンテナ名 bash
+    例）docker container exec -it my-mysql bash
+
+    ※コンテナ名はこれで調べる。NAME 欄の文字列をコピーしておく
+    docker-compose ps
+
+MySQL が使える可動化を確認する
+    mysql --version
+
+
+mysqlに接続する
+    mysql -u ユーザー名 -D データベース名 -p
+    例）mysql -u samplename -D sampledb -p
+
+    パスワードを聞かれたらパスワードを入力する。
+    例）root
+
+    ※「docker-compose.yml」ファイルにユーザー名やらDB名が載ってる
+
+
+------- 終了方法 --------
+mysqlを終了させる
+    \q
+Docker のコンテナを抜ける
+    exit
+Dockerを終了させる
+    docker-compose down
+起動中のイメージが存在しないことを確認する。
+    docker-compose ps
+
+
+
+------- その他 --------
+テーブル一覧を取得する方法
+    \dt
+
+mysql を終了させる場合は以下を実行
+    \q
