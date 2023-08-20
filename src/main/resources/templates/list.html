@@ -6,6 +6,7 @@
     <title>顧客一覧</title>
   </head>
   <body>
+    <h2>顧客一覧</h2>
     <table>
       <tr>
         <th>ID</th>
@@ -16,6 +17,19 @@
         <td th:text="${customer.id}"></td>
         <td th:text="${customer.name}"></td>
         <td th:text="${customer.email}"></td>
+      </tr>
+    </table>
+    <h2>学生一覧</h2>
+    <table>
+      <tr>
+        <th>学生番号</th>
+        <th>氏名</th>
+        <th>誕生日</th>
+      </tr>
+      <tr th:each="student: ${students}">
+        <td th:text="${student.studentNumber}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.birthday}"></td>
       </tr>
     </table>
   </body>
