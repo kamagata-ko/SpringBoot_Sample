@@ -12,6 +12,7 @@
     />
   </head>
   <body>
+    <a th:href="@{/create}">顧客登録</a>
     <h2>顧客一覧</h2>
     <table class="table">
       <tr>
@@ -25,7 +26,7 @@
         <td th:text="${customer.email}"></td>
       </tr>
     </table>
-    <h2>学生一覧</h2>
+    <!-- <h2>学生一覧</h2>
     <table class="table">
       <tr>
         <th>学生番号</th>
@@ -63,6 +64,6 @@
           <span th:text="${entry.value}"></span>
         </p>
       </li>
-    </ul>
+    </ul> -->
   </body>
 </html>

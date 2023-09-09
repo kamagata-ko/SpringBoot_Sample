@@ -5,10 +5,13 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.SpringBoot_Sample.domain.Customer;
 import com.example.SpringBoot_Sample.domain.Sales;
@@ -22,29 +25,45 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @Autowired
-    StudentService studentService;
+    // @Autowired
+    // StudentService studentService;
 
-    @Autowired
-    SalesService salesService;
+    // @Autowired
+    // SalesService salesService;
 
     @GetMapping("/customer")
     String list(Model model) {
         List<Customer> customers = customerService.findAll();
-        List<Student> students = studentService.findAll();
-        List<Sales> salesList = salesService.findAll();
+        // List<Student> students = studentService.findAll();
+        // List<Sales> salesList = salesService.findAll();
 
 
-        List<Sales> salesCulcList = salesService.findAll();
-        Map<String, Double> result = salesCulcList.stream().collect(Collectors.groupingBy(Sales::getProductName, Collectors.averagingDouble(Sales::getQuantity)));
+        // List<Sales> salesCulcList = salesService.findAll();
+        // Map<String, Double> result = salesCulcList.stream().collect(Collectors.groupingBy(Sales::getProductName, Collectors.averagingDouble(Sales::getQuantity)));
 
 
 
         model.addAttribute("customers", customers);
-        model.addAttribute("students", students);
-        model.addAttribute("salesList", salesList);
+        // model.addAttribute("students", students);
+        // model.addAttribute("salesList", salesList);
 
-        model.addAttribute("salesAvgMap", result);
+        // model.addAttribute("salesAvgMap", result);
         return "list";
+    }
+
+    @GetMapping("create")
+    String create(@ModelAttribute CustomerForm customerForm) {
+        return "create";
+    }
+
+    @PostMapping("create")
+    String regist(CustomerForm customerForm){
+        Customer customer = new Customer();
+        
+        BeanUtils.copyProperties(customerForm, customer);
+
+        customerService.insert(customer);
+
+        return "redirect:/";
     }
 }
