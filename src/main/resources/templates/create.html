@@ -10,11 +10,23 @@
       <table>
         <tr>
           <th>名前</th>
-          <td><input type="text" name="name" th:field="*{name}" /></td>
+          <td>
+            <input type="text" name="name" th:field="*{name}" />
+            <span
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"
+            ></span>
+          </td>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <td><input type="text" name="email" th:field="*{email}" /></td>
+          <td>
+            <input type="text" name="email" th:field="*{email}" />
+            <span
+              th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}"
+            ></span>
+          </td>
         </tr>
       </table>
       <input type="submit" value="送信" />
